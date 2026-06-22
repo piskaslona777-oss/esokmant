@@ -3,1257 +3,500 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ES OKMANT — New Generation Fund</title>
-    <meta name="description" content="Фонд для молодых основателей стартапов. Деньги, связи, опыт — без лишних слов.">
+    <title>Фитнес-курсы — тренировки дома и в зале</title>
+    <meta name="description" content="Авторские фитнес-программы: похудеть, подтянуть тело, набрать форму. Тренировки и питание под вашу цель.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/jpeg" href="photo_2026-06-12_13-19-18 (3).jpg">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        
-        #preloader {
-            position: fixed; inset: 0; z-index: 9999;
-            background: #050507;
-            display: flex; align-items: center; justify-content: center;
-            flex-direction: column;
-        }
-        .pre-logo {
-            display: flex; align-items: center; gap: 16px;
-            opacity: 0; transform: scale(0.92);
-            filter: blur(8px);
-        }
-        .pre-logo-mark {
-            width: 56px; height: 56px; border-radius: 50%;
-            overflow: hidden; flex-shrink: 0;
-        }
-        .pre-logo-mark img {
-            width: 100%; height: 100%; object-fit: cover;
-        }
-        .pre-logo-text {
-            font-family: 'Instrument Serif', Georgia, serif;
-            font-size: clamp(36px, 5.5vw, 64px);
-            color: white; letter-spacing: -0.03em; line-height: 1;
-        }
-        .pre-logo-text em { font-style: italic; color: #e8490f; }
-        .pre-sub {
-            font-family: 'Inter', sans-serif;
-            font-size: 12px; letter-spacing: 0.25em; text-transform: uppercase;
-            color: rgba(255,255,255,0.25); margin-top: 20px;
-            opacity: 0; transform: translateY(6px);
-        }
-        @media (prefers-reduced-motion: reduce) {
-            #preloader { display: none !important; }
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --bg: #F3F3F3;
+            --white: #FFFFFF;
+            --accent: #F66297;
+            --accent-hover: #e8507f;
+            --accent-light: rgba(246, 98, 151, 0.1);
+            --text: #000000;
+            --text-secondary: #555555;
+            --text-muted: #777777;
+            --radius: 20px;
+            --radius-btn: 50px;
         }
 
-        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-        :root {
-            --bg-0: #08080a;
-            --bg-1: #0e0e11;
-            --bg-2: #141418;
-            --bg-3: #1a1a1f;
-            --bg-card: #1e1e24;
-            --cream: #e8e0d6;
-            --text: #d4cdc4;
-            --text-dim: #8a8578;
-            --text-muted: #5c574e;
-            --accent: #e8490f;
-            --accent-hover: #d13d08;
-            --accent-glow: rgba(232,73,15,0.12);
-            --green: #22c55e;
-            --bd: rgba(255,255,255,0.06);
-        }
         html { scroll-behavior: smooth; }
+
         body {
             font-family: 'Inter', -apple-system, sans-serif;
-            background: var(--bg-0); color: var(--text);
-            line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: hidden;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
         }
-        ::selection { background: var(--accent); color: white; }
-        a { color: inherit; text-decoration: none; }
-        .serif { font-family: 'Instrument Serif', Georgia, serif; }
-        .serif-i { font-family: 'Instrument Serif', Georgia, serif; font-style: italic; }
-        .wrap { max-width: 1200px; margin: 0 auto; width: 100%; }
 
-        
-        .nav {
-            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-            padding: 0 32px; border-bottom: 1px solid transparent;
-            transition: background 0.4s, border-color 0.4s;
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
-        .nav.scrolled {
-            background: rgba(8,8,10,0.9); backdrop-filter: blur(24px);
-            -webkit-backdrop-filter: blur(24px); border-bottom-color: var(--bd);
-        }
-        .nav-inner {
-            max-width: 1200px; margin: 0 auto; display: flex;
-            align-items: center; justify-content: space-between; height: 72px;
-        }
-        .nav-logo {
-            font-weight: 600; font-size: 15px; letter-spacing: -0.02em;
-            display: flex; align-items: center; gap: 12px; cursor: pointer;
-        }
-        .nav-logo-mark {
-            width: 32px; height: 32px; border-radius: 50%;
-            overflow: hidden; flex-shrink: 0;
-        }
-        .nav-logo-mark img {
-            width: 100%; height: 100%; object-fit: cover;
-        }
-        .nav-logo span { color: var(--text-dim); font-weight: 400; font-size: 13px; }
-        .nav-links { display: flex; align-items: center; gap: 32px; }
-        .nav-links a { font-size: 13px; color: var(--text-dim); transition: color 0.2s; cursor: pointer; }
-        .nav-links a:hover { color: white; }
-        .nav-cta {
-            font-size: 13px; font-weight: 500; color: white !important;
-            background: var(--accent); padding: 9px 22px; border-radius: 8px;
-            transition: background 0.2s; cursor: pointer;
-        }
-        .nav-cta:hover { background: var(--accent-hover); }
-        .mob-toggle { display: none; background: none; border: none; cursor: pointer; padding: 8px; }
-        .mob-toggle span { display: block; width: 20px; height: 2px; background: white; margin: 4px 0; }
-        .mob-menu {
-            display: none; position: fixed; inset: 0; background: var(--bg-0);
-            z-index: 99; padding: 100px 32px 32px; flex-direction: column; gap: 20px;
-        }
-        .mob-menu.open { display: flex; }
-        .mob-menu a { font-family: 'Instrument Serif', Georgia, serif; font-size: 32px; color: var(--cream); cursor: pointer; }
 
-        
+        .btn {
+            display: inline-block;
+            background: var(--accent);
+            color: #fff;
+            font-size: 16px;
+            font-weight: 600;
+            padding: 16px 40px;
+            border-radius: var(--radius-btn);
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: background 0.2s, transform 0.2s;
+            font-family: inherit;
+        }
+
+        .btn:hover { background: var(--accent-hover); }
+        .btn:active { transform: translateY(2px); }
+
+        .section-title {
+            font-size: 32px;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-title span { color: var(--accent); }
+
+        /* HERO */
         .hero {
-            min-height: 100vh; display: flex; flex-direction: column;
-            justify-content: flex-end; padding: 0 32px 72px;
-            position: relative; overflow: hidden;
-        }
-        .hero::before {
-            content: ''; position: absolute; inset: 0;
-            background:
-                radial-gradient(ellipse 70% 50% at 15% 85%, rgba(232,73,15,0.07), transparent),
-                radial-gradient(ellipse 50% 40% at 85% 15%, rgba(99,102,241,0.05), transparent);
-            pointer-events: none;
-        }
-        .hero-deco {
-            position: absolute; top: 50%; right: 32px; transform: translateY(-55%);
-            font-family: 'Instrument Serif', Georgia, serif;
-            font-size: clamp(200px, 28vw, 420px); line-height: 0.85;
-            color: rgba(255,255,255,0.02); pointer-events: none;
-            letter-spacing: -0.05em; user-select: none;
-        }
-        .hero-content { max-width: 1200px; margin: 0 auto; width: 100%; position: relative; z-index: 1; }
-        .hero-badge {
-            display: inline-flex; align-items: center; gap: 14px;
-            font-family: 'Instrument Serif', Georgia, serif;
-            font-style: italic; font-size: 18px;
-            color: var(--text-dim); margin-bottom: 40px;
-        }
-        .hero-badge::before {
-            content: ''; width: 32px; height: 1px; background: var(--accent);
-        }
-        .hero h1 {
-            font-family: 'Instrument Serif', Georgia, serif;
-            font-weight: 400; font-size: clamp(44px, 7.5vw, 110px);
-            line-height: 0.95; letter-spacing: -0.03em;
-            max-width: 850px; margin-bottom: 48px;
-        }
-        .hero h1 em { font-style: italic; color: var(--accent); }
-        .hero-bottom { display: flex; align-items: flex-end; justify-content: space-between; gap: 48px; }
-        .hero-desc { font-size: 16px; color: var(--text-dim); max-width: 400px; line-height: 1.7; }
-        .hero-stats { display: flex; gap: 48px; }
-        .hero-stat { text-align: right; }
-        .hero-stat-num {
-            font-family: 'Instrument Serif', Georgia, serif;
-            font-size: 44px; line-height: 1; letter-spacing: -0.03em; color: white;
-        }
-        .hero-stat-label { font-size: 12px; color: var(--text-muted); margin-top: 6px; letter-spacing: 0.04em; }
-
-        
-        .marquee-wrap {
-            border-top: 1px solid var(--bd); border-bottom: 1px solid var(--bd);
-            padding: 18px 0; overflow: hidden; white-space: nowrap; background: var(--bg-1);
-        }
-        .marquee-track { display: inline-flex; animation: marquee 35s linear infinite; }
-        .marquee-item { font-family: 'Instrument Serif', Georgia, serif; font-size: 18px; color: var(--text-muted); padding: 0 28px; }
-        .marquee-dot { display: inline-block; width: 5px; height: 5px; border-radius: 50%; background: var(--accent); margin-right: 28px; vertical-align: middle; }
-        @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-
-        
-        .divider {
-            max-width: 1200px; margin: 0 auto; padding: 0 32px;
-            display: flex; align-items: center; gap: 20px;
-        }
-        .divider::before, .divider::after {
-            content: ''; flex: 1; height: 1px;
-            background: linear-gradient(90deg, transparent, var(--bd), transparent);
-        }
-        .divider-dot {
-            width: 6px; height: 6px; border-radius: 50%;
-            background: var(--accent); opacity: 0.4;
+            padding: 80px 0 60px;
         }
 
-        
-        .sec { padding: 120px 32px; }
-        .sec-0 { background: var(--bg-0); }
-        .sec-1 { background: var(--bg-1); }
-        .sec-2 { background: var(--bg-2); }
-        .sec-3 { background: var(--bg-3); }
-        .s-label {
-            font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase;
-            color: var(--accent); font-weight: 600; margin-bottom: 16px;
-            display: flex; align-items: center; gap: 12px;
-        }
-        .s-label::before {
-            content: ''; width: 24px; height: 1px; background: var(--accent);
-        }
-        .s-title {
-            font-family: 'Instrument Serif', Georgia, serif;
-            font-weight: 400; font-size: clamp(32px, 4.5vw, 56px);
-            line-height: 1.1; letter-spacing: -0.02em;
-            max-width: 650px; margin-bottom: 64px; color: var(--cream);
+        .hero-inner {
+            display: flex;
+            align-items: center;
+            gap: 60px;
         }
 
-        
-        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
-        .about-left { position: sticky; top: 120px; }
-        .about-text { font-size: 17px; line-height: 1.8; color: var(--text-dim); margin-bottom: 28px; }
-        .about-text strong { color: var(--cream); font-weight: 600; }
-        .about-manifesto {
-            font-family: 'Instrument Serif', Georgia, serif;
-            font-size: 26px; line-height: 1.4; color: var(--cream);
-            border-left: 3px solid var(--accent); padding-left: 24px; margin: 48px 0 0;
-        }
-        .about-value {
-            padding: 32px 0; border-bottom: 1px solid var(--bd);
-            display: grid; grid-template-columns: 40px 1fr; gap: 20px; align-items: start;
-        }
-        .about-value:first-child { border-top: 1px solid var(--bd); }
-        .about-value-num {
-            font-family: 'Instrument Serif', Georgia, serif;
-            font-size: 28px; color: var(--accent); line-height: 1; opacity: 0.6;
-        }
-        .about-value h3 { font-size: 16px; font-weight: 600; margin-bottom: 6px; color: var(--cream); }
-        .about-value p { font-size: 14px; color: var(--text-dim); line-height: 1.7; }
-
-        
-        .steps-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; position: relative; }
-        .steps-grid::before {
-            content: ''; position: absolute; top: 28px; left: 10%; right: 10%;
-            height: 1px; background: var(--bd);
-        }
-        .step {
-            text-align: center; padding: 0 20px; position: relative;
-        }
-        .step-num {
-            width: 56px; height: 56px; border-radius: 50%;
-            background: var(--bg-card); border: 1px solid var(--bd);
-            display: flex; align-items: center; justify-content: center;
-            font-family: 'Instrument Serif', Georgia, serif;
-            font-size: 22px; color: var(--cream); margin: 0 auto 24px;
-            position: relative; z-index: 1;
-        }
-        .step:first-child .step-num { background: var(--accent); border-color: var(--accent); }
-        .step h4 { font-size: 15px; font-weight: 600; margin-bottom: 8px; color: var(--cream); }
-        .step p { font-size: 13px; color: var(--text-dim); line-height: 1.6; }
-
-        
-        .programs-grid {
-            display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px;
-            background: var(--bd); border-radius: 16px; overflow: hidden;
-        }
-        .p-card {
-            background: var(--bg-2); padding: 44px 36px;
-            display: flex; flex-direction: column; min-height: 460px;
-            transition: background 0.3s; cursor: default;
-        }
-        .p-card:hover { background: var(--bg-card); }
-        .p-card.feat { background: var(--accent); color: white; }
-        .p-card.feat:hover { background: var(--accent-hover); }
-        .p-card.feat .p-label { color: rgba(255,255,255,0.7); }
-        .p-card.feat .p-desc, .p-card.feat .p-feat { color: rgba(255,255,255,0.8); }
-        .p-card.feat .p-feat { border-bottom-color: rgba(255,255,255,0.15); }
-        .p-card.feat .p-btn { background: white; color: var(--accent); border-color: white; }
-        .p-card.feat .p-btn:hover { background: var(--cream); }
-        .p-label { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 20px; font-weight: 500; }
-        .p-name { font-family: 'Instrument Serif', Georgia, serif; font-size: 38px; line-height: 1; letter-spacing: -0.02em; margin-bottom: 4px; color: var(--cream); }
-        .p-range { font-size: 14px; color: var(--text-dim); margin-bottom: 20px; }
-        .p-desc { font-size: 14px; color: var(--text-dim); line-height: 1.7; margin-bottom: 28px; }
-        .p-feats { list-style: none; margin-bottom: auto; padding-bottom: 28px; }
-        .p-feat { font-size: 13px; color: var(--text-dim); padding: 7px 0; border-bottom: 1px solid var(--bd); }
-        .p-feat:last-child { border-bottom: none; }
-        .p-btn {
-            display: block; padding: 13px 28px; border: 1px solid var(--bd);
-            border-radius: 8px; font-size: 13px; font-weight: 500; text-align: center;
-            transition: all 0.2s; cursor: pointer; background: transparent;
-            color: inherit; font-family: inherit; width: 100%;
-        }
-        .p-btn:hover { background: var(--accent); color: white; border-color: var(--accent); }
-
-        
-        .port-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            grid-template-rows: auto auto;
-            gap: 16px;
-        }
-        .port-item {
-            background: var(--bg-card); border-radius: 12px; padding: 32px;
-            display: flex; flex-direction: column; justify-content: space-between;
-            min-height: 200px; border: 1px solid var(--bd);
-            transition: transform 0.3s, box-shadow 0.3s; cursor: default;
-        }
-        .port-item:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.3); }
-        .port-item.big {
-            grid-column: span 2; min-height: 260px;
-            background: var(--bg-0); color: var(--cream); border-color: var(--bd);
-        }
-        .port-item.big .port-name { font-size: 32px; }
-        .port-item.big .port-tag { border-color: var(--bd); color: var(--text-dim); }
-        .port-item.big .port-desc { color: var(--text-dim); }
-        .port-item.big .port-bottom { border-top-color: var(--bd); }
-        .port-item.big .port-stage { color: var(--text-dim); }
-        .port-item.big:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(232,73,15,0.1); }
-        .port-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
-        .port-name { font-family: 'Instrument Serif', Georgia, serif; font-size: 24px; letter-spacing: -0.02em; color: var(--cream); }
-        .port-tag {
-            font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase;
-            color: var(--text-muted); padding: 4px 10px; border: 1px solid var(--bd);
-            border-radius: 100px; white-space: nowrap; flex-shrink: 0;
-        }
-        .port-desc { font-size: 13px; color: var(--text-dim); line-height: 1.6; margin: 14px 0; }
-        .port-bottom {
-            display: flex; justify-content: space-between; align-items: center;
-            padding-top: 16px; border-top: 1px solid var(--bd);
-        }
-        .port-stage { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); }
-        .port-raised { font-family: 'Instrument Serif', Georgia, serif; font-size: 20px; color: var(--green); }
-
-        
-        .test-track {
-            display: flex; gap: 20px; overflow-x: auto;
-            scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch;
-            padding-bottom: 8px; scrollbar-width: none;
-        }
-        .test-track::-webkit-scrollbar { display: none; }
-        .test-card {
-            flex: 0 0 380px; scroll-snap-align: start;
-            background: var(--bg-card); border: 1px solid var(--bd);
-            border-radius: 16px; padding: 36px; cursor: default;
-        }
-        .test-quote {
-            font-family: 'Instrument Serif', Georgia, serif;
-            font-size: 20px; line-height: 1.45; color: var(--cream); margin-bottom: 28px;
-            position: relative; padding-left: 20px;
-        }
-        .test-quote::before {
-            content: ''; position: absolute; left: 0; top: 4px;
-            width: 3px; height: calc(100% - 8px); background: var(--accent); border-radius: 2px;
-        }
-        .test-author { display: flex; align-items: center; gap: 12px; }
-        .test-avatar {
-            width: 40px; height: 40px; border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            font-family: 'Instrument Serif', Georgia, serif;
-            font-size: 16px; color: white;
-        }
-        .test-name { font-size: 14px; font-weight: 600; color: var(--cream); }
-        .test-role { font-size: 12px; color: var(--text-muted); }
-
-        
-        .team-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
-        .team-card {
-            background: var(--bg-card); border-radius: 12px; padding: 40px 24px;
-            text-align: center; border: 1px solid var(--bd);
-            transition: transform 0.3s; cursor: default; position: relative; overflow: hidden;
-        }
-        .team-card::before {
-            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
-            background: linear-gradient(90deg, var(--accent), transparent); opacity: 0;
-            transition: opacity 0.3s;
-        }
-        .team-card:hover { transform: translateY(-4px); }
-        .team-card:hover::before { opacity: 1; }
-        .team-avatar {
-            width: 72px; height: 72px; border-radius: 16px;
-            margin: 0 auto 20px; display: flex; align-items: center; justify-content: center;
-            font-family: 'Instrument Serif', Georgia, serif; font-size: 24px; color: white;
-        }
-        .team-name { font-size: 16px; font-weight: 600; margin-bottom: 4px; color: var(--cream); }
-        .team-role { font-size: 12px; color: var(--accent); margin-bottom: 12px; font-weight: 500; }
-        .team-bio { font-size: 13px; color: var(--text-dim); line-height: 1.6; }
-
-        
-        .logos-strip {
-            display: flex; align-items: center; justify-content: center;
-            gap: 48px; padding: 48px 32px;
-            border-top: 1px solid var(--bd); border-bottom: 1px solid var(--bd);
-            background: var(--bg-1);
-        }
-        .logos-strip span {
-            font-size: 16px; font-weight: 600; color: rgba(255,255,255,0.12);
-            letter-spacing: 0.08em; text-transform: uppercase; white-space: nowrap;
+        .hero-content {
+            flex: 1;
         }
 
-        
-        .apply-grid {
-            display: grid; grid-template-columns: 1fr 1fr;
-            gap: 80px; max-width: 1200px; margin: 0 auto; align-items: start;
+        .hero-title {
+            font-size: 42px;
+            font-weight: 700;
+            line-height: 1.15;
+            color: var(--accent);
+            margin-bottom: 16px;
+            text-transform: uppercase;
         }
-        .apply-left > p { font-size: 16px; color: var(--text-dim); line-height: 1.7; margin-bottom: 40px; }
-        .apply-fact {
-            display: flex; gap: 16px; align-items: baseline;
-            padding: 16px 0; border-bottom: 1px solid var(--bd);
-        }
-        .apply-fact-num { font-family: 'Instrument Serif', Georgia, serif; font-size: 32px; color: var(--accent); min-width: 72px; }
-        .apply-fact-text { font-size: 13px; color: var(--text-dim); }
-        .apply-form { display: flex; flex-direction: column; gap: 24px; }
-        .fg label {
-            display: block; font-size: 11px; letter-spacing: 0.12em;
-            text-transform: uppercase; color: var(--text-muted); margin-bottom: 10px; font-weight: 500;
-        }
-        .fg input, .fg select, .fg textarea {
-            width: 100%; padding: 14px 16px; background: var(--bg-1);
-            border: 1px solid var(--bd); border-radius: 8px; color: var(--cream);
-            font-family: inherit; font-size: 15px; outline: none; transition: border-color 0.2s;
-        }
-        .fg input::placeholder, .fg textarea::placeholder { color: var(--text-muted); }
-        .fg input:focus, .fg select:focus, .fg textarea:focus { border-color: var(--accent); }
-        .fg select option { background: var(--bg-1); color: var(--cream); }
-        .fg textarea { resize: none; min-height: 100px; }
-        .form-submit {
-            padding: 16px 40px; background: var(--accent); color: white;
-            border: none; border-radius: 8px; font-family: inherit;
-            font-size: 15px; font-weight: 500; cursor: pointer;
-            transition: background 0.2s, transform 0.2s; margin-top: 8px;
-        }
-        .form-submit:hover { background: var(--accent-hover); transform: translateY(-2px); }
-        .form-submit:disabled { opacity: 0.5; cursor: default; transform: none; }
 
-        
-        .footer-wrap { border-top: 1px solid var(--bd); background: var(--bg-0); }
-        .footer { max-width: 1200px; margin: 0 auto; padding: 56px 32px 40px; }
-        .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 48px; }
-        .footer-brand p { font-size: 13px; color: var(--text-muted); line-height: 1.7; margin-top: 16px; max-width: 280px; }
-        .footer-col h5 { font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 16px; }
-        .footer-col a { display: block; font-size: 13px; color: var(--text-dim); margin-bottom: 10px; transition: color 0.2s; cursor: pointer; }
-        .footer-col a:hover { color: white; }
-        .footer-bottom {
-            display: flex; justify-content: space-between; align-items: center;
-            padding-top: 32px; border-top: 1px solid var(--bd);
+        .hero-subtitle {
+            font-size: 24px;
+            font-weight: 500;
+            color: var(--accent);
+            margin-bottom: 40px;
+            line-height: 1.3;
         }
-        .footer-copy { font-size: 12px; color: var(--text-muted); }
-        .footer-socials { display: flex; gap: 12px; }
-        .footer-socials a {
-            width: 34px; height: 34px; border-radius: 8px; border: 1px solid var(--bd);
-            display: flex; align-items: center; justify-content: center;
-            color: var(--text-muted); transition: all 0.2s; cursor: pointer;
-        }
-        .footer-socials a:hover { background: var(--accent); color: white; border-color: var(--accent); }
 
-        
-        .reveal {
-            opacity: 0; transform: translateY(24px);
-            transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1);
+        .hero-desc {
+            font-size: 18px;
+            font-weight: 500;
+            color: var(--text);
+            margin-bottom: 40px;
+            line-height: 1.5;
         }
-        .reveal.visible { opacity: 1; transform: translateY(0); }
 
-        
-        @media (max-width: 1024px) {
-            .about-grid { grid-template-columns: 1fr; gap: 48px; }
-            .about-left { position: static; }
-            .team-grid { grid-template-columns: repeat(2, 1fr); }
-            .apply-grid { grid-template-columns: 1fr; gap: 56px; }
-            .steps-grid { grid-template-columns: repeat(2, 1fr); gap: 40px; }
-            .steps-grid::before { display: none; }
-            .footer-top { grid-template-columns: 1fr 1fr; }
+        .hero-note {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-top: 16px;
         }
+
+        .hero-image {
+            flex: 1;
+            max-width: 500px;
+        }
+
+        .hero-image-placeholder {
+            width: 100%;
+            aspect-ratio: 4/5;
+            border-radius: var(--radius);
+            background: linear-gradient(135deg, #fce4ec, #f8bbd0, #f48fb1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            color: var(--accent);
+            font-weight: 500;
+        }
+
+        /* PROGRAMS */
+        .programs {
+            padding: 80px 0;
+        }
+
+        .programs-category {
+            margin-bottom: 60px;
+        }
+
+        .programs-category:last-child { margin-bottom: 0; }
+
+        .category-title {
+            font-size: 28px;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .program-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .program-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            overflow: hidden;
+            display: flex;
+            min-height: 220px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .program-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+        }
+
+        .program-card.flagship {
+            border: 2px solid var(--accent);
+        }
+
+        .program-image {
+            width: 45%;
+            min-height: 220px;
+            flex-shrink: 0;
+        }
+
+        .program-image-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            color: #fff;
+            font-weight: 500;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .program-info {
+            padding: 28px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            flex: 1;
+        }
+
+        .program-badge {
+            display: inline-block;
+            background: var(--accent-light);
+            color: var(--accent);
+            font-size: 13px;
+            font-weight: 600;
+            padding: 5px 16px;
+            border-radius: 50px;
+            width: fit-content;
+            margin-bottom: 10px;
+        }
+
+        .program-tag {
+            color: var(--accent);
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 4px;
+        }
+
+        .program-name {
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--text);
+        }
+
+        .program-desc {
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+
+        .program-desc strong {
+            color: var(--text);
+            font-weight: 600;
+        }
+
+        .program-btn {
+            display: inline-block;
+            background: var(--accent);
+            color: #fff;
+            font-size: 14px;
+            font-weight: 500;
+            padding: 10px 24px;
+            border-radius: var(--radius-btn);
+            text-decoration: none;
+            width: fit-content;
+            transition: background 0.2s;
+        }
+
+        .program-btn:hover { background: var(--accent-hover); }
+
+        /* CTA */
+        .cta-section {
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .cta-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 60px 40px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .cta-title {
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .cta-title span { color: var(--accent); }
+
+        .cta-desc {
+            font-size: 16px;
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+            line-height: 1.6;
+        }
+
+        /* FOOTER */
+        .footer {
+            padding: 40px 0;
+            text-align: center;
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        /* RESPONSIVE */
         @media (max-width: 768px) {
-            .nav { padding: 0 20px; }
-            .nav-links { display: none; }
-            .mob-toggle { display: block; }
-            .hero { padding: 0 20px 60px; }
-            .hero-deco { display: none; }
-            .hero-bottom { flex-direction: column; align-items: flex-start; }
-            .hero-stats { gap: 28px; }
-            .hero-stat { text-align: left; }
-            .sec { padding: 80px 20px; }
-            .programs-grid, .port-grid, .team-grid { grid-template-columns: 1fr; }
-            .port-item.big { grid-column: span 1; }
-            .steps-grid { grid-template-columns: 1fr; gap: 32px; }
-            .test-card { flex: 0 0 300px; }
-            .footer { padding: 40px 20px 32px; }
-            .footer-top { grid-template-columns: 1fr; gap: 32px; }
-            .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
-            .logos-strip { gap: 24px; flex-wrap: wrap; padding: 32px 20px; }
-            .divider { padding: 0 20px; }
-        }
-        @media (prefers-reduced-motion: reduce) {
-            .reveal { opacity: 1; transform: none; transition: none; }
-            .marquee-track { animation: none; }
-            html { scroll-behavior: auto; }
+            .hero { padding: 40px 0; }
+
+            .hero-inner {
+                flex-direction: column-reverse;
+                gap: 30px;
+            }
+
+            .hero-image { max-width: 100%; }
+
+            .hero-title { font-size: 28px; }
+            .hero-subtitle { font-size: 20px; }
+            .hero-desc { font-size: 16px; }
+
+            .btn {
+                width: 100%;
+                text-align: center;
+                padding: 18px 20px;
+                font-size: 15px;
+            }
+
+            .program-card {
+                flex-direction: column;
+                min-height: auto;
+            }
+
+            .program-image {
+                width: 100%;
+                min-height: 200px;
+            }
+
+            .program-info { padding: 20px; }
+            .program-name { font-size: 20px; }
+
+            .section-title { font-size: 24px; }
+            .category-title { font-size: 22px; }
+
+            .cta-card { padding: 40px 24px; }
+            .cta-title { font-size: 22px; }
         }
     </style>
 </head>
 <body>
 
-<div id="preloader" aria-label="Загрузка">
-    <div class="pre-logo">
-        <div class="pre-logo-mark"><img src="photo_2026-06-12_13-19-18 (3).jpg" alt="ES OKMANT"></div>
-        <div class="pre-logo-text">ES <em>OKMANT</em></div>
-    </div>
-    <div class="pre-sub">New Generation Fund</div>
-</div>
-
-<nav class="nav" role="navigation" aria-label="Основная навигация">
-    <div class="nav-inner">
-        <a href="#" class="nav-logo" aria-label="ES OKMANT — на главную">
-            <div class="nav-logo-mark"><img src="photo_2026-06-12_13-19-18 (3).jpg" alt="ES OKMANT"></div>
-            ES OKMANT <span>New Generation Fund</span>
-        </a>
-        <div class="nav-links">
-            <a href="#about">О фонде</a>
-            <a href="#how">Как это работает</a>
-            <a href="#programs">Программы</a>
-            <a href="#portfolio">Портфолио</a>
-            <a href="#apply" class="nav-cta">Подать заявку</a>
-        </div>
-        <button class="mob-toggle" onclick="document.querySelector('.mob-menu').classList.toggle('open')" aria-label="Меню">
-            <span></span><span></span><span></span>
-        </button>
-    </div>
-</nav>
-<div class="mob-menu">
-    <a href="#about" onclick="this.parentElement.classList.remove('open')">О фонде</a>
-    <a href="#how" onclick="this.parentElement.classList.remove('open')">Как это работает</a>
-    <a href="#programs" onclick="this.parentElement.classList.remove('open')">Программы</a>
-    <a href="#portfolio" onclick="this.parentElement.classList.remove('open')">Портфолио</a>
-    <a href="#apply" onclick="this.parentElement.classList.remove('open')">Подать заявку</a>
-</div>
-
 <section class="hero">
-    <div class="hero-deco" aria-hidden="true">NG</div>
-    <div class="hero-content reveal">
-        <div class="hero-badge">Набор открыт, сезон 2026</div>
-        <h1>Деньги для тех, кто <em>строит</em> будущее</h1>
-        <div class="hero-bottom">
-            <p class="hero-desc">Мы находим молодых фаундеров с дерзкими идеями и даём им всё, чтобы эти идеи стали компаниями. Капитал, связи, опыт — без лишней бюрократии.</p>
-            <div class="hero-stats">
-                <div class="hero-stat"><div class="hero-stat-num">150+</div><div class="hero-stat-label">стартапов</div></div>
-                <div class="hero-stat"><div class="hero-stat-num">$47M</div><div class="hero-stat-label">инвестировано</div></div>
-                <div class="hero-stat"><div class="hero-stat-num">12</div><div class="hero-stat-label">стран</div></div>
+    <div class="container">
+        <div class="hero-inner">
+            <div class="hero-content">
+                <h1 class="hero-title">Приведите тело в форму</h1>
+                <p class="hero-subtitle">без диет, голода и запретов<br>с пользой для здоровья</p>
+                <p class="hero-desc">Похудеть, подтянуть ягодицы и живот, набрать форму в зале, восстановиться после родов — тренировки и питание под вашу цель</p>
+                <a href="#programs" class="btn">Выбрать программу</a>
+            </div>
+            <div class="hero-image">
+                <div class="hero-image-placeholder">Фото тренера</div>
             </div>
         </div>
     </div>
 </section>
 
-<div class="marquee-wrap" aria-hidden="true">
-    <div class="marquee-track">
-        <span class="marquee-item"><span class="marquee-dot"></span>Fintech</span>
-        <span class="marquee-item"><span class="marquee-dot"></span>AI / ML</span>
-        <span class="marquee-item"><span class="marquee-dot"></span>HealthTech</span>
-        <span class="marquee-item"><span class="marquee-dot"></span>EdTech</span>
-        <span class="marquee-item"><span class="marquee-dot"></span>CleanTech</span>
-        <span class="marquee-item"><span class="marquee-dot"></span>Cybersecurity</span>
-        <span class="marquee-item"><span class="marquee-dot"></span>SaaS</span>
-        <span class="marquee-item"><span class="marquee-dot"></span>Logistics</span>
-        <span class="marquee-item"><span class="marquee-dot"></span>Fintech</span>
-        <span class="marquee-item"><span class="marquee-dot"></span>AI / ML</span>
-        <span class="marquee-item"><span class="marquee-dot"></span>HealthTech</span>
-        <span class="marquee-item"><span class="marquee-dot"></span>EdTech</span>
-        <span class="marquee-item"><span class="marquee-dot"></span>CleanTech</span>
-        <span class="marquee-item"><span class="marquee-dot"></span>Cybersecurity</span>
-        <span class="marquee-item"><span class="marquee-dot"></span>SaaS</span>
-        <span class="marquee-item"><span class="marquee-dot"></span>Logistics</span>
+<section class="programs" id="programs">
+    <div class="container">
+        <h2 class="section-title">Программы тренировок <span>под вашу цель</span></h2>
+
+        <div class="programs-category">
+            <h3 class="category-title">Тренировки дома</h3>
+            <div class="program-list">
+
+                <div class="program-card flagship">
+                    <div class="program-image">
+                        <div class="program-image-placeholder" style="background: linear-gradient(135deg, #667eea, #764ba2);">Фото программы</div>
+                    </div>
+                    <div class="program-info">
+                        <div class="program-badge">ФЛАГМАН</div>
+                        <div class="program-name">Старт с нуля</div>
+                        <p class="program-desc"><strong>Освоите технику и втянетесь в регулярные тренировки</strong> — без травм и перенапряжения. Первая программа для тех, кто давно не занимался или начинает впервые.</p>
+                        <a href="#" class="program-btn">Подробнее</a>
+                    </div>
+                </div>
+
+                <div class="program-card">
+                    <div class="program-image">
+                        <div class="program-image-placeholder" style="background: linear-gradient(135deg, #f093fb, #f5576c);">Фото программы</div>
+                    </div>
+                    <div class="program-info">
+                        <div class="program-tag">Марафон · 21 день</div>
+                        <div class="program-name">Марафон стройности</div>
+                        <p class="program-desc"><strong>Первый видимый результат за 21 день</strong> — уходит лишний объём, появляется тонус и лёгкость. Для тех, кто стартует с нуля.</p>
+                        <a href="#" class="program-btn">Подробнее</a>
+                    </div>
+                </div>
+
+                <div class="program-card">
+                    <div class="program-image">
+                        <div class="program-image-placeholder" style="background: linear-gradient(135deg, #a18cd1, #fbc2eb);">Фото программы</div>
+                    </div>
+                    <div class="program-info">
+                        <div class="program-tag">Марафон · 4 недели</div>
+                        <div class="program-name">Упругие ягодицы</div>
+                        <p class="program-desc"><strong>Подтянутые ягодицы с собственным весом</strong> — без оборудования. Для тех, кто хочет целенаправленно проработать нижнюю часть тела дома.</p>
+                        <a href="#" class="program-btn">Подробнее</a>
+                    </div>
+                </div>
+
+                <div class="program-card">
+                    <div class="program-image">
+                        <div class="program-image-placeholder" style="background: linear-gradient(135deg, #ffecd2, #fcb69f);">Фото программы</div>
+                    </div>
+                    <div class="program-info">
+                        <div class="program-tag">Марафон · 3 недели</div>
+                        <div class="program-name">Плоский живот</div>
+                        <p class="program-desc"><strong>Убрать выпирающий живот,</strong> который не уходит даже после похудения. Работа с глубокими мышцами пресса, которые отвечают за плоский живот.</p>
+                        <a href="#" class="program-btn">Подробнее</a>
+                    </div>
+                </div>
+
+                <div class="program-card">
+                    <div class="program-image">
+                        <div class="program-image-placeholder" style="background: linear-gradient(135deg, #ff9a9e, #fad0c4);">Фото программы</div>
+                    </div>
+                    <div class="program-info">
+                        <div class="program-tag">Курс · 6 недель</div>
+                        <div class="program-name">Жиросжигающий</div>
+                        <p class="program-desc"><strong>Сжечь жир и проявить рельеф за 6 недель.</strong> Интервальные тренировки с гантелями для тех, кто уже имеет опыт занятий.</p>
+                        <a href="#" class="program-btn">Подробнее</a>
+                    </div>
+                </div>
+
+                <div class="program-card">
+                    <div class="program-image">
+                        <div class="program-image-placeholder" style="background: linear-gradient(135deg, #c3cfe2, #f5f7fa);">Фото программы</div>
+                    </div>
+                    <div class="program-info">
+                        <div class="program-tag">Курс · 8 недель</div>
+                        <div class="program-name">Восстановление после родов</div>
+                        <p class="program-desc"><strong>Мягкое возвращение в форму</strong> — безопасные упражнения для укрепления мышц тазового дна, пресса и спины. С учётом особенностей послеродового периода.</p>
+                        <a href="#" class="program-btn">Подробнее</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="programs-category">
+            <h3 class="category-title">Тренировки в зале</h3>
+            <div class="program-list">
+
+                <div class="program-card">
+                    <div class="program-image">
+                        <div class="program-image-placeholder" style="background: linear-gradient(135deg, #2c3e50, #4ca1af);">Фото программы</div>
+                    </div>
+                    <div class="program-info">
+                        <div class="program-tag">Курс · 8 недель</div>
+                        <div class="program-name">Силовой для ягодиц</div>
+                        <p class="program-desc"><strong>Объёмные, округлые ягодицы</strong> — со штангой и тренажёрами. Прогрессия нагрузки, техника выполнения, план питания.</p>
+                        <a href="#" class="program-btn">Подробнее</a>
+                    </div>
+                </div>
+
+                <div class="program-card">
+                    <div class="program-image">
+                        <div class="program-image-placeholder" style="background: linear-gradient(135deg, #232526, #414345);">Фото программы</div>
+                    </div>
+                    <div class="program-info">
+                        <div class="program-tag">Курс · 12 недель</div>
+                        <div class="program-name">Полное тело</div>
+                        <p class="program-desc"><strong>Сбалансированная проработка всех групп мышц.</strong> Для тех, кто хочет гармоничную фигуру без перекосов. 4 тренировки в неделю.</p>
+                        <a href="#" class="program-btn">Подробнее</a>
+                    </div>
+                </div>
+
+                <div class="program-card">
+                    <div class="program-image">
+                        <div class="program-image-placeholder" style="background: linear-gradient(135deg, #ff512f, #dd2476);">Фото программы</div>
+                    </div>
+                    <div class="program-info">
+                        <div class="program-tag">Курс · 6 недель</div>
+                        <div class="program-name">Рельеф и сушка</div>
+                        <p class="program-desc"><strong>Убрать подкожный жир и проявить мышцы.</strong> Высокоинтенсивные тренировки + план питания для дефицита. Для подготовленных.</p>
+                        <a href="#" class="program-btn">Подробнее</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
     </div>
-</div>
+</section>
 
-<div class="sec-1" style="padding: 24px 0;">
-    <div class="divider"><span class="divider-dot"></span></div>
-</div>
-
-<section id="about" class="sec sec-1">
-    <div class="wrap">
-        <div class="about-grid">
-            <div class="about-left reveal">
-                <div class="s-label">О фонде</div>
-                <h2 class="s-title">Мы не инвестируем в идеи. Мы инвестируем в <span class="serif-i">людей.</span></h2>
-                <p class="about-text">ES OKMANT создан фаундерами для фаундеров. Мы знаем, каково это — питчить 50 инвесторов и получать отказы. Каково строить продукт без денег. Каково не спать ночами, потому что <strong>ты веришь в свою идею</strong>.</p>
-                <p class="about-text">Поэтому мы работаем иначе. Решение за 14 дней. Никаких бесконечных раундов due diligence. Мы смотрим на команду, на энергию, на способность исполнять.</p>
-                <blockquote class="about-manifesto">Лучшие компании строят те, кому говорили «это невозможно».</blockquote>
-            </div>
-            <div class="about-values reveal">
-                <div class="about-value"><div class="about-value-num">01</div><div><h3>Скорость</h3><p>Ответ за 14 дней. Деньги на счету через неделю после term sheet.</p></div></div>
-                <div class="about-value"><div class="about-value-num">02</div><div><h3>Hands-on менторство</h3><p>60+ менторов — не теоретики, а люди, которые сами строили и продавали компании.</p></div></div>
-                <div class="about-value"><div class="about-value-num">03</div><div><h3>Глобальная сеть</h3><p>Связи в Долине, Лондоне, Сингапуре, Дубае. Помогаем выходить на рынки.</p></div></div>
-                <div class="about-value"><div class="about-value-num">04</div><div><h3>Честные условия</h3><p>Прозрачный term sheet. Никаких скрытых условий или кабальных клаузул.</p></div></div>
-            </div>
+<section class="cta-section" id="cta">
+    <div class="container">
+        <div class="cta-card">
+            <h2 class="cta-title">Начните тренироваться <span>сегодня</span></h2>
+            <p class="cta-desc">Выберите программу под свою цель и уровень подготовки. Результат заметите уже через 2-3 недели регулярных тренировок.</p>
+            <a href="#programs" class="btn">Выбрать программу</a>
         </div>
     </div>
 </section>
 
-<div class="sec-2" style="padding: 24px 0;">
-    <div class="divider"><span class="divider-dot"></span></div>
-</div>
-
-<section id="how" class="sec sec-2">
-    <div class="wrap">
-        <div class="reveal">
-            <div class="s-label">Как это работает</div>
-            <h2 class="s-title">От заявки до денег — <span class="serif-i">4 шага.</span></h2>
-        </div>
-        <div class="steps-grid reveal">
-            <div class="step">
-                <div class="step-num">1</div>
-                <h4>Заявка</h4>
-                <p>Заполните форму — расскажите о себе и своём стартапе. Это займёт 5 минут.</p>
-            </div>
-            <div class="step">
-                <div class="step-num">2</div>
-                <h4>Скрининг</h4>
-                <p>Наша команда изучает заявку. Если подходите — приглашаем на 30-минутный звонок.</p>
-            </div>
-            <div class="step">
-                <div class="step-num">3</div>
-                <h4>Deep Dive</h4>
-                <p>Знакомимся с командой, продуктом и метриками. Без бюрократии — решение за 14 дней.</p>
-            </div>
-            <div class="step">
-                <div class="step-num">4</div>
-                <h4>Деньги на счету</h4>
-                <p>Подписываем term sheet. Через неделю деньги у вас. Начинаем работать вместе.</p>
-            </div>
-        </div>
+<footer class="footer">
+    <div class="container">
+        <p>&copy; 2026. Все права защищены.</p>
     </div>
-</section>
+</footer>
 
-<div class="sec-3" style="padding: 24px 0;">
-    <div class="divider"><span class="divider-dot"></span></div>
-</div>
-
-<section id="programs" class="sec sec-3">
-    <div class="wrap">
-        <div class="reveal">
-            <div class="s-label">Программы</div>
-            <h2 class="s-title">Три трека. Одна цель — ваш <span class="serif-i">рост.</span></h2>
-        </div>
-        <div class="programs-grid reveal">
-            <div class="p-card">
-                <div class="p-label">Pre-Seed</div>
-                <div class="p-name serif">Ignite</div>
-                <div class="p-range">$25K — $100K</div>
-                <p class="p-desc">Для команд с идеей и первым прототипом. 12 недель интенсива.</p>
-                <ul class="p-feats">
-                    <li class="p-feat">Валидация идеи и рынка</li>
-                    <li class="p-feat">2 персональных ментора</li>
-                    <li class="p-feat">Доступ к коворкингу</li>
-                    <li class="p-feat">Demo Day перед инвесторами</li>
-                </ul>
-                <a href="#apply" class="p-btn">Подать заявку</a>
-            </div>
-            <div class="p-card feat">
-                <div class="p-label">Seed — популярный</div>
-                <div class="p-name serif">Accelerate</div>
-                <div class="p-range">$100K — $300K</div>
-                <p class="p-desc">Для стартапов с первыми клиентами. 6 месяцев акселерации.</p>
-                <ul class="p-feats">
-                    <li class="p-feat">Всё из Ignite +</li>
-                    <li class="p-feat">Growth-маркетинг и PR</li>
-                    <li class="p-feat">Юридическая поддержка</li>
-                    <li class="p-feat">Нетворкинг с 500+ фаундерами</li>
-                </ul>
-                <a href="#apply" class="p-btn">Подать заявку</a>
-            </div>
-            <div class="p-card">
-                <div class="p-label">Series A</div>
-                <div class="p-name serif">Scale</div>
-                <div class="p-range">$300K — $500K</div>
-                <p class="p-desc">Для масштабирования и выхода на глобальный рынок.</p>
-                <ul class="p-feats">
-                    <li class="p-feat">Всё из Accelerate +</li>
-                    <li class="p-feat">CFO и финмоделирование</li>
-                    <li class="p-feat">Board-level советники</li>
-                    <li class="p-feat">Связи с Tier-1 VC фондами</li>
-                </ul>
-                <a href="#apply" class="p-btn">Подать заявку</a>
-            </div>
-        </div>
-    </div>
-</section>
-
-<div class="sec-2" style="padding: 24px 0;">
-    <div class="divider"><span class="divider-dot"></span></div>
-</div>
-
-<section id="portfolio" class="sec sec-2">
-    <div class="wrap">
-        <div class="reveal">
-            <div class="s-label">Портфолио</div>
-            <h2 class="s-title">Компании, которые мы <span class="serif-i">вырастили.</span></h2>
-        </div>
-        <div class="port-grid reveal">
-            <div class="port-item big">
-                <div>
-                    <div class="port-top"><div class="port-name serif">MediLink</div><span class="port-tag">HealthTech</span></div>
-                    <p class="port-desc">Телемедицина с AI-диагностикой. 200K+ пациентов в 8 странах. Наш самый быстрорастущий стартап — от Seed до Series B за 14 месяцев.</p>
-                </div>
-                <div class="port-bottom"><span class="port-stage">Series B</span><span class="port-raised serif">$28M</span></div>
-            </div>
-            <div class="port-item">
-                <div>
-                    <div class="port-top"><div class="port-name serif">NeuraPay</div><span class="port-tag">Fintech</span></div>
-                    <p class="port-desc">AI-оптимизация платежей для e-commerce.</p>
-                </div>
-                <div class="port-bottom"><span class="port-stage">Series A</span><span class="port-raised serif">$12M</span></div>
-            </div>
-            <div class="port-item">
-                <div>
-                    <div class="port-top"><div class="port-name serif">DataVault</div><span class="port-tag">Security</span></div>
-                    <p class="port-desc">Zero-knowledge encryption нового поколения.</p>
-                </div>
-                <div class="port-bottom"><span class="port-stage">Series A</span><span class="port-raised serif">$15M</span></div>
-            </div>
-            <div class="port-item">
-                <div>
-                    <div class="port-top"><div class="port-name serif">EduSpark</div><span class="port-tag">EdTech</span></div>
-                    <p class="port-desc">Персонализированное обучение. 50+ университетов.</p>
-                </div>
-                <div class="port-bottom"><span class="port-stage">Series A</span><span class="port-raised serif">$8M</span></div>
-            </div>
-            <div class="port-item">
-                <div>
-                    <div class="port-top"><div class="port-name serif">CarbonZero</div><span class="port-tag">CleanTech</span></div>
-                    <p class="port-desc">Компенсация углеродного следа корпораций.</p>
-                </div>
-                <div class="port-bottom"><span class="port-stage">Seed</span><span class="port-raised serif">$4.5M</span></div>
-            </div>
-            <div class="port-item">
-                <div>
-                    <div class="port-top"><div class="port-name serif">SupplyAI</div><span class="port-tag">Logistics</span></div>
-                    <p class="port-desc">Предиктивная аналитика цепочек поставок.</p>
-                </div>
-                <div class="port-bottom"><span class="port-stage">Seed</span><span class="port-raised serif">$3.2M</span></div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<div class="sec-1" style="padding: 24px 0;">
-    <div class="divider"><span class="divider-dot"></span></div>
-</div>
-
-<section class="sec sec-1">
-    <div class="wrap">
-        <div class="reveal">
-            <div class="s-label">Отзывы</div>
-            <h2 class="s-title">Что говорят <span class="serif-i">фаундеры.</span></h2>
-        </div>
-        <div class="test-track reveal">
-            <div class="test-card">
-                <p class="test-quote">ES OKMANT дал нам не просто деньги — они дали стратегию, связи и уверенность. За 8 месяцев мы выросли с нуля до $2M ARR.</p>
-                <div class="test-author">
-                    <div class="test-avatar" style="background: linear-gradient(135deg, #6366f1, #8b5cf6);">ИК</div>
-                    <div><div class="test-name">Иван Краснов</div><div class="test-role">CEO, NeuraPay</div></div>
-                </div>
-            </div>
-            <div class="test-card">
-                <p class="test-quote">Менторы — не теоретики. Они сами строили компании и знают, каково это. Их советы сэкономили нам год ошибок.</p>
-                <div class="test-author">
-                    <div class="test-avatar" style="background: linear-gradient(135deg, #059669, #10b981);">АЛ</div>
-                    <div><div class="test-name">Анна Лебедева</div><div class="test-role">CTO, CarbonZero</div></div>
-                </div>
-            </div>
-            <div class="test-card">
-                <p class="test-quote">Благодаря Scale мы привлекли $15M Series A и вышли на рынки Европы. ES OKMANT — лучшее, что случилось с DataVault.</p>
-                <div class="test-author">
-                    <div class="test-avatar" style="background: linear-gradient(135deg, #d97706, #f59e0b);">ПВ</div>
-                    <div><div class="test-name">Павел Волков</div><div class="test-role">CEO, DataVault</div></div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<div class="logos-strip" aria-label="Упоминания в медиа">
-    <span>Forbes</span><span>TechCrunch</span><span>RBC</span><span>VC.ru</span><span>The Bell</span><span>Коммерсантъ</span>
-</div>
-
-<div class="sec-3" style="padding: 24px 0;">
-    <div class="divider"><span class="divider-dot"></span></div>
-</div>
-
-<section id="team" class="sec sec-3">
-    <div class="wrap">
-        <div class="reveal">
-            <div class="s-label">Команда</div>
-            <h2 class="s-title">Люди, которые <span class="serif-i">были на вашем месте.</span></h2>
-        </div>
-        <div class="team-grid reveal">
-            <div class="team-card">
-                <div class="team-avatar" style="background: linear-gradient(135deg, #1a1a2e, #16213e);">AK</div>
-                <div class="team-name">Алексей Козлов</div><div class="team-role">Managing Partner</div>
-                <div class="team-bio">Ex-CTO Yandex Cloud. 15 лет в tech-инвестициях.</div>
-            </div>
-            <div class="team-card">
-                <div class="team-avatar" style="background: linear-gradient(135deg, #16213e, #0f3460);">MS</div>
-                <div class="team-name">Мария Соколова</div><div class="team-role">Investment Director</div>
-                <div class="team-bio">Экс-VP Goldman Sachs. MBA Stanford.</div>
-            </div>
-            <div class="team-card">
-                <div class="team-avatar" style="background: linear-gradient(135deg, #0f3460, #533483);">DR</div>
-                <div class="team-name">Дмитрий Романов</div><div class="team-role">Head of Acceleration</div>
-                <div class="team-bio">3x founder. Продал стартап за $40M.</div>
-            </div>
-            <div class="team-card">
-                <div class="team-avatar" style="background: linear-gradient(135deg, #533483, #e8490f);">EO</div>
-                <div class="team-name">Елена Орлова</div><div class="team-role">Community Lead</div>
-                <div class="team-bio">Построила комьюнити 10K+ фаундеров.</div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<div class="sec-0" style="padding: 24px 0;">
-    <div class="divider"><span class="divider-dot"></span></div>
-</div>
-
-<section id="apply" class="sec sec-0">
-    <div class="apply-grid">
-        <div class="apply-left reveal">
-            <div class="s-label">Подать заявку</div>
-            <h2 class="s-title">У вас есть идея. У нас есть всё <span class="serif-i">остальное.</span></h2>
-            <p>Расскажите о своём стартапе. Мы рассматриваем каждую заявку и отвечаем в течение 14 дней.</p>
-            <div class="apply-fact"><div class="apply-fact-num serif">14</div><div class="apply-fact-text">дней — максимальный срок ответа</div></div>
-            <div class="apply-fact"><div class="apply-fact-num serif">89%</div><div class="apply-fact-text">наших стартапов привлекают следующий раунд</div></div>
-            <div class="apply-fact"><div class="apply-fact-num serif">0</div><div class="apply-fact-text">скрытых условий в наших term sheets</div></div>
-        </div>
-        <form class="apply-form reveal" onsubmit="event.preventDefault(); var b=this.querySelector('.form-submit'); b.textContent='Отправлено'; b.disabled=true;">
-            <div class="fg"><label for="name">Имя</label><input type="text" id="name" name="name" required placeholder="Как вас зовут"></div>
-            <div class="fg"><label for="email">Email</label><input type="email" id="email" name="email" required placeholder="your@email.com"></div>
-            <div class="fg"><label for="startup">Стартап</label><input type="text" id="startup" name="startup" required placeholder="Название проекта"></div>
-            <div class="fg"><label for="stage">Стадия</label>
-                <select id="stage" name="stage" required>
-                    <option value="">Выберите стадию</option>
-                    <option value="idea">Идея</option><option value="mvp">MVP</option>
-                    <option value="pre-seed">Pre-Seed</option><option value="seed">Seed</option>
-                    <option value="series-a">Series A</option>
-                </select>
-            </div>
-            <div class="fg"><label for="desc">О проекте</label><textarea id="desc" name="desc" required placeholder="Чем занимается ваш стартап? Какую проблему решаете?"></textarea></div>
-            <button type="submit" class="form-submit">Отправить заявку</button>
-        </form>
-    </div>
-</section>
-
-<div class="footer-wrap">
-    <footer class="footer">
-        <div class="footer-top">
-            <div class="footer-brand">
-                <div class="nav-logo" style="pointer-events:none;">
-                    <div class="nav-logo-mark"><img src="photo_2026-06-12_13-19-18 (3).jpg" alt="ES OKMANT"></div>
-                    ES OKMANT <span>New Generation Fund</span>
-                </div>
-                <p>Инвестируем в основателей будущего. От идеи до глобального масштабирования.</p>
-            </div>
-            <div class="footer-col">
-                <h5>Фонд</h5>
-                <a href="#about">О фонде</a><a href="#how">Как это работает</a><a href="#programs">Программы</a><a href="#portfolio">Портфолио</a>
-            </div>
-            <div class="footer-col">
-                <h5>Ресурсы</h5>
-                <a href="#">Блог</a><a href="#">Истории успеха</a><a href="#">FAQ</a><a href="#">Медиакит</a>
-            </div>
-            <div class="footer-col">
-                <h5>Контакты</h5>
-                <a href="mailto:hello@esokmant.fund">hello@esokmant.fund</a>
-                <a href="#">Москва, Россия</a>
-                <a href="#">Telegram</a>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <div class="footer-copy">&copy; 2026 ES OKMANT. Все права защищены.</div>
-            <div class="footer-socials">
-                <a href="#" aria-label="Telegram"><svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg></a>
-                <a href="#" aria-label="LinkedIn"><svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
-                <a href="#" aria-label="X"><svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
-            </div>
-        </div>
-    </footer>
-</div>
-
-<script>
-(function() {
-    var pre = document.getElementById('preloader');
-    if (!pre) return;
-    var logo = pre.querySelector('.pre-logo');
-    var sub  = pre.querySelector('.pre-sub');
-
-    document.body.style.overflow = 'hidden';
-
-    // Logo: slowly deblurs and fades in over 1s
-    setTimeout(function() {
-        logo.style.transition = 'opacity 1s ease, transform 1s ease, filter 1s ease';
-        logo.style.opacity = '1';
-        logo.style.transform = 'scale(1)';
-        logo.style.filter = 'blur(0px)';
-    }, 200);
-
-    // Subtitle fades in
-    setTimeout(function() {
-        sub.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
-        sub.style.opacity = '1';
-        sub.style.transform = 'translateY(0)';
-    }, 700);
-
-    // Fade out preloader
-    setTimeout(function() {
-        pre.style.transition = 'opacity 0.6s ease';
-        pre.style.opacity = '0';
-        setTimeout(function() {
-            pre.style.display = 'none';
-            document.body.style.overflow = '';
-        }, 620);
-    }, 2200);
-})();
-</script>
-
-<script>
-    const obs = new IntersectionObserver(entries => {
-        entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-    }, { threshold: 0.12 });
-    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
-    const nav = document.querySelector('.nav');
-    window.addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 40), { passive: true });
-</script>
-
-<style>
-    .chat-fab {
-        position: fixed; bottom: 28px; right: 28px; z-index: 200;
-        width: 56px; height: 56px; border-radius: 50%;
-        background: var(--accent); border: none; cursor: pointer;
-        display: flex; align-items: center; justify-content: center;
-        box-shadow: 0 4px 24px rgba(232,73,15,0.4);
-        transition: transform 0.2s, box-shadow 0.2s;
-    }
-    .chat-fab:hover { transform: scale(1.08); box-shadow: 0 6px 32px rgba(232,73,15,0.55); }
-    .chat-fab svg { transition: opacity 0.2s, transform 0.2s; }
-    .chat-fab .icon-close { position: absolute; opacity: 0; transform: rotate(-90deg); }
-    .chat-fab.open .icon-chat { opacity: 0; transform: rotate(90deg); }
-    .chat-fab.open .icon-close { opacity: 1; transform: rotate(0deg); }
-
-    .chat-badge {
-        position: absolute; top: -4px; right: -4px;
-        width: 18px; height: 18px; border-radius: 50%;
-        background: var(--green); border: 2px solid var(--bg-0);
-        font-size: 10px; font-weight: 700; color: white;
-        display: flex; align-items: center; justify-content: center;
-        animation: pulse-badge 2s ease-in-out infinite;
-    }
-    @keyframes pulse-badge {
-        0%, 100% { box-shadow: 0 0 0 0 rgba(34,197,94,0.5); }
-        50% { box-shadow: 0 0 0 6px rgba(34,197,94,0); }
-    }
-
-    .chat-window {
-        position: fixed; bottom: 96px; right: 28px; z-index: 199;
-        width: 360px; height: 520px;
-        background: var(--bg-1); border: 1px solid var(--bd);
-        border-radius: 20px; display: flex; flex-direction: column;
-        box-shadow: 0 24px 64px rgba(0,0,0,0.5);
-        transform: scale(0.92) translateY(16px); transform-origin: bottom right;
-        opacity: 0; pointer-events: none;
-        transition: transform 0.3s cubic-bezier(0.16,1,0.3,1), opacity 0.3s;
-        overflow: hidden;
-    }
-    .chat-window.open {
-        transform: scale(1) translateY(0);
-        opacity: 1; pointer-events: all;
-    }
-
-    .chat-header {
-        padding: 18px 20px; background: var(--bg-2);
-        border-bottom: 1px solid var(--bd);
-        display: flex; align-items: center; gap: 12px; flex-shrink: 0;
-    }
-    .chat-avatar-wrap { position: relative; flex-shrink: 0; }
-    .chat-avatar {
-        width: 42px; height: 42px; border-radius: 12px;
-        background: linear-gradient(135deg, var(--accent), #ff6b35);
-        display: flex; align-items: center; justify-content: center;
-        font-family: 'Instrument Serif', Georgia, serif;
-        font-size: 16px; color: white;
-    }
-    .chat-online {
-        position: absolute; bottom: -2px; right: -2px;
-        width: 12px; height: 12px; border-radius: 50%;
-        background: var(--green); border: 2px solid var(--bg-2);
-    }
-    .chat-header-info { flex: 1; min-width: 0; }
-    .chat-header-name { font-size: 14px; font-weight: 600; color: var(--cream); }
-    .chat-header-status { font-size: 12px; color: var(--green); margin-top: 2px; }
-    .chat-header-close {
-        width: 28px; height: 28px; border-radius: 8px;
-        background: none; border: none; cursor: pointer;
-        color: var(--text-muted); display: flex; align-items: center; justify-content: center;
-        transition: background 0.2s, color 0.2s;
-    }
-    .chat-header-close:hover { background: var(--bd); color: var(--cream); }
-
-    .chat-messages {
-        flex: 1; overflow-y: auto; padding: 20px 16px;
-        display: flex; flex-direction: column; gap: 12px;
-        scrollbar-width: thin; scrollbar-color: var(--bd) transparent;
-    }
-    .chat-messages::-webkit-scrollbar { width: 4px; }
-    .chat-messages::-webkit-scrollbar-track { background: transparent; }
-    .chat-messages::-webkit-scrollbar-thumb { background: var(--bd); border-radius: 2px; }
-
-    .chat-msg { display: flex; gap: 8px; align-items: flex-end; }
-    .chat-msg.user { flex-direction: row-reverse; }
-    .chat-msg-avatar {
-        width: 28px; height: 28px; border-radius: 8px; flex-shrink: 0;
-        background: linear-gradient(135deg, var(--accent), #ff6b35);
-        display: flex; align-items: center; justify-content: center;
-        font-family: 'Instrument Serif', Georgia, serif; font-size: 11px; color: white;
-    }
-    .chat-msg-bubble {
-        max-width: 240px; padding: 10px 14px; border-radius: 16px;
-        font-size: 13px; line-height: 1.55; color: var(--cream);
-    }
-    .chat-msg.manager .chat-msg-bubble {
-        background: var(--bg-card); border-bottom-left-radius: 4px;
-        border: 1px solid var(--bd);
-    }
-    .chat-msg.user .chat-msg-bubble {
-        background: var(--accent); color: white; border-bottom-right-radius: 4px;
-    }
-    .chat-msg-time { font-size: 10px; color: var(--text-muted); margin-top: 4px; text-align: right; }
-    .chat-msg.manager .chat-msg-time { text-align: left; }
-
-    .chat-typing {
-        display: flex; gap: 8px; align-items: flex-end;
-    }
-    .chat-typing-dots {
-        background: var(--bg-card); border: 1px solid var(--bd);
-        border-radius: 16px; border-bottom-left-radius: 4px;
-        padding: 12px 16px; display: flex; gap: 4px; align-items: center;
-    }
-    .chat-typing-dots span {
-        width: 6px; height: 6px; border-radius: 50%;
-        background: var(--text-muted); display: inline-block;
-        animation: typing-dot 1.4s ease-in-out infinite;
-    }
-    .chat-typing-dots span:nth-child(2) { animation-delay: 0.2s; }
-    .chat-typing-dots span:nth-child(3) { animation-delay: 0.4s; }
-    @keyframes typing-dot {
-        0%, 60%, 100% { opacity: 0.3; transform: translateY(0); }
-        30% { opacity: 1; transform: translateY(-4px); }
-    }
-
-    .chat-quick {
-        padding: 0 16px 12px; display: flex; gap: 8px; flex-wrap: wrap; flex-shrink: 0;
-    }
-    .chat-quick-btn {
-        font-size: 12px; padding: 6px 12px; border-radius: 100px;
-        border: 1px solid var(--bd); background: transparent;
-        color: var(--text-dim); cursor: pointer; font-family: inherit;
-        transition: all 0.2s; white-space: nowrap;
-    }
-    .chat-quick-btn:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-glow); }
-
-    .chat-input-wrap {
-        padding: 12px 16px 16px; border-top: 1px solid var(--bd);
-        display: flex; gap: 10px; align-items: flex-end; flex-shrink: 0;
-        background: var(--bg-1);
-    }
-    .chat-input {
-        flex: 1; background: var(--bg-card); border: 1px solid var(--bd);
-        border-radius: 12px; padding: 10px 14px; color: var(--cream);
-        font-family: inherit; font-size: 14px; outline: none; resize: none;
-        min-height: 42px; max-height: 100px; line-height: 1.4;
-        transition: border-color 0.2s;
-        scrollbar-width: none;
-        field-sizing: content;
-    }
-    .chat-input::-webkit-scrollbar { display: none; }
-    .chat-input::placeholder { color: var(--text-muted); }
-    .chat-input:focus { border-color: var(--accent); }
-    .chat-send {
-        width: 42px; height: 42px; border-radius: 12px; flex-shrink: 0;
-        background: var(--accent); border: none; cursor: pointer;
-        display: flex; align-items: center; justify-content: center;
-        color: white; transition: background 0.2s, transform 0.15s;
-    }
-    .chat-send:hover { background: var(--accent-hover); }
-    .chat-send:active { transform: scale(0.92); }
-    .chat-send:disabled { opacity: 0.4; cursor: default; transform: none; }
-
-    @media (max-width: 480px) {
-        .chat-window { right: 12px; left: 12px; width: auto; bottom: 84px; }
-        .chat-fab { bottom: 16px; right: 16px; }
-    }
-    @media (prefers-reduced-motion: reduce) {
-        .chat-window { transition: none; }
-        .chat-fab { transition: none; }
-        .chat-typing-dots span { animation: none; opacity: 0.5; }
-        .chat-badge { animation: none; }
-    }
-</style>
-
-<button class="chat-fab" id="chatFab" aria-label="Открыть чат с менеджером" aria-expanded="false" aria-controls="chatWindow">
-    <svg class="icon-chat" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true">
-        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
-    </svg>
-    <svg class="icon-close" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" viewBox="0 0 24 24" aria-hidden="true">
-        <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
-    </svg>
-    <span class="chat-badge" aria-hidden="true">1</span>
-</button>
-
-<div class="chat-window" id="chatWindow" role="dialog" aria-label="Чат с менеджером" aria-modal="false">
-    <div class="chat-header">
-        <div class="chat-avatar-wrap">
-            <div class="chat-avatar">АС</div>
-            <div class="chat-online" title="Онлайн"></div>
-        </div>
-        <div class="chat-header-info">
-            <div class="chat-header-name">Анна Смирнова</div>
-            <div class="chat-header-status">Онлайн · обычно отвечает за 5 мин</div>
-        </div>
-        <button class="chat-header-close" id="chatClose" aria-label="Закрыть чат">
-            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" viewBox="0 0 24 24">
-                <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
-            </svg>
-        </button>
-    </div>
-
-    <div class="chat-messages" id="chatMessages" role="log" aria-live="polite" aria-atomic="false">
-        <div class="chat-msg manager" id="msg1">
-            <div class="chat-msg-avatar">АС</div>
-            <div>
-                <div class="chat-msg-bubble">Привет! Я Анна, менеджер ES OKMANT. Рада помочь вам с любыми вопросами о фонде и программах. 👋</div>
-                <div class="chat-msg-time">Сейчас</div>
-            </div>
-        </div>
-    </div>
-
-    <div class="chat-quick" id="chatQuick">
-        <button class="chat-quick-btn" data-text="Какие требования к стартапу?">Требования</button>
-        <button class="chat-quick-btn" data-text="Как подать заявку?">Подача заявки</button>
-        <button class="chat-quick-btn" data-text="Сколько времени занимает рассмотрение?">Сроки</button>
-    </div>
-
-    <div class="chat-input-wrap">
-        <textarea class="chat-input" id="chatInput" placeholder="Напишите сообщение..." rows="1" aria-label="Сообщение"></textarea>
-        <button class="chat-send" id="chatSend" aria-label="Отправить" disabled>
-            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-                <line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/>
-            </svg>
-        </button>
-    </div>
-</div>
-
-<script>
-(function() {
-    const fab = document.getElementById('chatFab');
-    const win = document.getElementById('chatWindow');
-    const closeBtn = document.getElementById('chatClose');
-    const messagesEl = document.getElementById('chatMessages');
-    const input = document.getElementById('chatInput');
-    const sendBtn = document.getElementById('chatSend');
-    const quickEl = document.getElementById('chatQuick');
-    const badge = fab.querySelector('.chat-badge');
-
-    const replies = [
-        'Отличный вопрос! Мы рассматриваем стартапы на любой стадии — от идеи до Series A. Главное — сильная команда и понятная проблема.',
-        'Для подачи заявки достаточно заполнить форму на сайте. Решение принимаем за 14 дней — без бюрократии.',
-        'Мы инвестируем в команды из 12 стран. Если у вас есть продукт или прототип — уже можно подавать заявку.',
-        'Наши менторы — практики, которые сами строили компании. 60+ человек готовы помочь с конкретными задачами.',
-        'Чтобы узнать подробности о программе, нажмите «Подать заявку» — это займёт 5 минут, а мы ответим в течение 14 дней.'
-    ];
-    let replyIdx = 0;
-
-    function now() {
-        return new Date().toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit' });
-    }
-
-    function addMsg(text, role) {
-        const wrap = document.createElement('div');
-        wrap.className = 'chat-msg ' + role;
-        const isManager = role === 'manager';
-        wrap.innerHTML = (isManager ? '<div class="chat-msg-avatar">АС</div>' : '') +
-            '<div>' +
-            '<div class="chat-msg-bubble">' + text.replace(/</g, '&lt;') + '</div>' +
-            '<div class="chat-msg-time">' + now() + '</div>' +
-            '</div>' +
-            (!isManager ? '<div class="chat-msg-avatar" style="background:var(--bg-card);border:1px solid var(--bd);"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>' : '');
-        messagesEl.appendChild(wrap);
-        messagesEl.scrollTop = messagesEl.scrollHeight;
-    }
-
-    function showTyping() {
-        const t = document.createElement('div');
-        t.className = 'chat-typing'; t.id = 'chatTyping';
-        t.innerHTML = '<div class="chat-msg-avatar">АС</div><div class="chat-typing-dots"><span></span><span></span><span></span></div>';
-        messagesEl.appendChild(t);
-        messagesEl.scrollTop = messagesEl.scrollHeight;
-    }
-
-    function removeTyping() {
-        const t = document.getElementById('chatTyping');
-        if (t) t.remove();
-    }
-
-    function sendMessage(text) {
-        text = text.trim();
-        if (!text) return;
-        addMsg(text, 'user');
-        input.value = '';
-        input.style.height = '';
-        sendBtn.disabled = true;
-        quickEl.style.display = 'none';
-
-        setTimeout(() => {
-            showTyping();
-            setTimeout(() => {
-                removeTyping();
-                addMsg(replies[replyIdx % replies.length], 'manager');
-                replyIdx++;
-            }, 1200 + Math.random() * 600);
-        }, 400);
-    }
-
-    function toggleChat(open) {
-        const isOpen = open !== undefined ? open : !win.classList.contains('open');
-        win.classList.toggle('open', isOpen);
-        fab.classList.toggle('open', isOpen);
-        fab.setAttribute('aria-expanded', isOpen);
-        if (isOpen) {
-            badge.style.display = 'none';
-            setTimeout(() => input.focus(), 300);
-        }
-    }
-
-    fab.addEventListener('click', () => toggleChat());
-    closeBtn.addEventListener('click', () => toggleChat(false));
-
-    input.addEventListener('input', () => {
-        sendBtn.disabled = !input.value.trim();
-    });
-
-    input.addEventListener('keydown', e => {
-        if (e.key === 'Enter' && !e.shiftKey) {
-            e.preventDefault();
-            if (!sendBtn.disabled) sendMessage(input.value);
-        }
-    });
-
-    sendBtn.addEventListener('click', () => sendMessage(input.value));
-
-    quickEl.querySelectorAll('.chat-quick-btn').forEach(btn => {
-        btn.addEventListener('click', () => sendMessage(btn.dataset.text));
-    });
-
-    document.addEventListener('keydown', e => {
-        if (e.key === 'Escape' && win.classList.contains('open')) toggleChat(false);
-    });
-})();
-</script>
 </body>
 </html>
