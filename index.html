@@ -915,7 +915,6 @@
 
     document.body.style.overflow = 'hidden';
 
-    // Logo: slowly deblurs and fades in over 1s
     setTimeout(function() {
         logo.style.transition = 'opacity 1s ease, transform 1s ease, filter 1s ease';
         logo.style.opacity = '1';
@@ -923,14 +922,12 @@
         logo.style.filter = 'blur(0px)';
     }, 200);
 
-    // Subtitle fades in
     setTimeout(function() {
         sub.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
         sub.style.opacity = '1';
         sub.style.transform = 'translateY(0)';
     }, 700);
 
-    // Fade out preloader
     setTimeout(function() {
         pre.style.transition = 'opacity 0.6s ease';
         pre.style.opacity = '0';
